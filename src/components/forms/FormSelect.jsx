@@ -18,13 +18,13 @@ const FormSelect = ({
       {label && <span className="mb-2 block text-sm font-bold text-ink">{label}</span>}
       <span
         className={cn(
-          'relative flex min-h-12 items-center rounded-2xl bg-surface px-4 ring-1 ring-stone-200 transition focus-within:ring-2 focus-within:ring-primary',
+          'relative flex items-center rounded-sm bg-surface px-3.5 ring-1 ring-stone-200 transition focus-within:ring-2 focus-within:ring-primary',
           error && 'ring-danger/30 focus-within:ring-danger',
         )}
       >
         <select
           id={selectId}
-          className="w-full appearance-none bg-transparent py-3 pr-9 text-sm font-semibold text-ink outline-none"
+          className="w-full appearance-none bg-transparent py-2 pr-9 text-sm font-semibold text-ink outline-none"
           {...props}
         >
           {placeholder && <option value="">{placeholder}</option>}

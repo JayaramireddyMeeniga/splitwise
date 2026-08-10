@@ -3,11 +3,11 @@ import { cn } from '../../utils/cn'
 
 const variants = {
   primary:
-    'bg-primary text-white shadow-[0_18px_45px_rgba(234,88,12,0.24)] hover:-translate-y-0.5 hover:bg-primary-hover active:translate-y-0',
+    'bg-primary text-white shadow-[0_14px_34px_rgba(249,115,22,0.2)] hover:-translate-y-0.5 hover:bg-primary-hover active:translate-y-0',
   secondary:
     'bg-surface/90 text-ink ring-1 ring-stone-200/90 backdrop-blur hover:-translate-y-0.5 hover:ring-primary/30 hover:shadow-soft active:translate-y-0',
   accent:
-    'bg-secondary text-white shadow-[0_16px_35px_rgba(217,119,6,0.25)] hover:-translate-y-0.5 hover:bg-secondary-hover active:translate-y-0',
+    'bg-secondary text-white shadow-[0_14px_32px_rgba(245,158,11,0.2)] hover:-translate-y-0.5 hover:bg-secondary-hover active:translate-y-0',
   ghost: 'bg-transparent text-stone-600 hover:bg-surface/72 hover:text-ink',
   danger: 'bg-danger text-white shadow-[0_16px_35px_rgba(220,38,38,0.22)] hover:brightness-95',
 }

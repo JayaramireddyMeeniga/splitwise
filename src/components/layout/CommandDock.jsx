@@ -25,9 +25,9 @@ const navItems = [
 
 const CommandDock = () => (
   <div className="pointer-events-none fixed inset-x-0 bottom-5 z-40 px-3">
-    <nav className="animate-dock-in pointer-events-auto mx-auto flex max-w-5xl items-center gap-2 overflow-x-auto rounded-[1.85rem] border border-white/12 bg-ink/95 p-2.5 shadow-[0_26px_80px_rgba(28,25,23,0.38)] backdrop-blur-2xl">
+    <nav className="animate-dock-in pointer-events-auto mx-auto flex max-w-5xl items-center gap-2 overflow-x-auto rounded-[1.85rem] border border-white/16 bg-charcoal/92 p-2.5 shadow-[0_22px_58px_rgba(28,25,23,0.28)] backdrop-blur-2xl">
       <div className="hidden shrink-0 items-center gap-3 border-r border-white/10 px-3 pr-5 md:flex">
-        <div className="grid h-11 w-11 place-items-center rounded-2xl bg-primary text-base font-black text-white shadow-[0_12px_28px_rgba(234,88,12,0.28)]">
+        <div className="grid h-11 w-11 place-items-center rounded-2xl bg-primary text-base font-black text-white shadow-[0_10px_22px_rgba(249,115,22,0.22)]">
           RX
         </div>
         <div>
@@ -44,8 +44,8 @@ const CommandDock = () => (
             cn(
               'group flex min-w-16 flex-col items-center justify-center gap-1 rounded-2xl px-3 py-2 text-[11px] font-black transition md:min-w-20',
               isActive
-                ? 'bg-primary text-white shadow-[0_14px_34px_rgba(234,88,12,0.28)]'
-                : 'text-white/58 hover:-translate-y-1 hover:bg-white/9 hover:text-white',
+                ? 'bg-primary text-white shadow-[0_12px_26px_rgba(249,115,22,0.22)]'
+                : 'text-white/62 hover:-translate-y-1 hover:bg-white/10 hover:text-white',
             )
           }
         >

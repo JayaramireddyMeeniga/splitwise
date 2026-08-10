@@ -6,7 +6,7 @@ const PageHeader = ({ eyebrow, title, description, actions, meta }) => (
           {eyebrow}
         </p>
       )}
-      <h1 className="text-3xl font-black tracking-normal text-ink md:text-4xl">{title}</h1>
+      <h1 className="text-3xl font-medium tracking-normal text-ink md:text-4xl">{title}</h1>
       {description && <p className="mt-2 max-w-2xl text-sm leading-6 text-stone-500">{description}</p>}
       {meta && <div className="mt-4 flex flex-wrap gap-2">{meta}</div>}
     </div>

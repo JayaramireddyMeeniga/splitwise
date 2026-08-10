@@ -3,7 +3,6 @@ import {
     ArrowUpRight, CalendarDays, CheckCircle2, CircleDollarSign, Plus,
     ReceiptText, ShieldCheck, Users, WalletCards,
 } from 'lucide-react'
-import PageHeader from '../../components/layout/PageHeader'
 import Card, { CardHeader, CardTitle } from '../../components/ui/Card'
 import Button from '../../components/ui/Button'
 import Badge from '../../components/ui/Badge'
@@ -15,32 +14,32 @@ import FileUpload from '../../components/forms/FileUpload'
 const summary = [
     {
         label: 'Monthly spend',
-    value: 'INR 18,420',
-    delta: '72% of budget',
-    icon: ReceiptText,
-    tone: 'bg-ink text-white',
-  },
+        value: 'INR 18,420',
+        delta: '72% of budget',
+        icon: ReceiptText,
+        tone: 'bg-charcoal text-white',
+    },
     {
         label: 'Collected',
-    value: 'INR 14,500',
-    delta: '4 members paid',
-    icon: CheckCircle2,
-    tone: 'bg-primary text-white',
-  },
+        value: 'INR 14,500',
+        delta: '4 members paid',
+        icon: CheckCircle2,
+        tone: 'bg-primary-light text-primary',
+    },
     {
         label: 'Pending dues',
-    value: 'INR 3,920',
-    delta: '2 reminders today',
-    icon: CircleDollarSign,
-    tone: 'bg-secondary text-white',
-  },
+        value: 'INR 3,920',
+        delta: '2 reminders today',
+        icon: CircleDollarSign,
+        tone: 'bg-secondary-light text-secondary-hover',
+    },
     {
         label: 'Wallet',
-    value: 'INR 6,080',
-    delta: 'healthy balance',
-    icon: WalletCards,
-    tone: 'bg-primary-light text-primary',
-  },
+        value: 'INR 6,080',
+        delta: 'healthy balance',
+        icon: WalletCards,
+        tone: 'bg-primary-light text-primary',
+    },
 ]
 
 const columns = [
@@ -66,35 +65,30 @@ const settlements = [
 
 const Dashboard = () => (
     <>
-        <PageHeader
-            eyebrow="Bachelor Room 4A"
-            title="Money clarity for the whole room"
-            description="Rent, wallet purchases, reimbursements, and monthly settlements are organized in one calm operating view."
-            meta={
-                <>
-                    <Badge tone="dark">6 active roommates</Badge>
-                    <Badge tone="success">Wallet healthy</Badge>
-                    <Badge tone="warning">Rent due Aug 5</Badge>
-                </>
-            }
-            actions={
-                <>
-                    <Button variant="secondary" icon={CalendarDays}>
-                        View month
-                    </Button>
-                    <Button icon={Plus}>Add expense</Button>
-                </>
-            }
-        />
+        <section className="mb-4 flex flex-col gap-3 rounded-[1.35rem] border border-stone-200/80 bg-surface/70 px-4 py-3 shadow-[0_12px_34px_rgba(28,25,23,0.055)] backdrop-blur-xl md:flex-row md:items-center md:justify-between">
+            <div className="flex flex-wrap gap-2">
+                <Badge tone="dark">6 active roommates</Badge>
+                <Badge tone="success">Wallet healthy</Badge>
+                <Badge tone="warning">Rent due Aug 5</Badge>
+            </div>
+            <div className="flex flex-wrap gap-2 md:justify-end">
+                <Button className="rounded-xl" variant="secondary" icon={CalendarDays}>
+                    View month
+                </Button>
+                <Button className="rounded-xl" icon={Plus}>
+                    Add expense
+                </Button>
+            </div>
+        </section>
 
         <section className="grid gap-3 md:grid-cols-2 xl:grid-cols-4">
             {summary.map(({ label, value, delta, icon, tone }) => (
                 <Card key={label} className="overflow-hidden">
                     <div className="flex items-start justify-between">
                         <div>
-              <p className="text-sm font-bold text-stone-500">{label}</p>
+                            <p className="text-sm font-bold text-stone-500">{label}</p>
                             <p className="mt-3 text-2xl font-black text-ink">{value}</p>
-              <p className="mt-1 text-xs font-bold uppercase tracking-[0.14em] text-stone-400">
+                            <p className="mt-1 text-xs font-bold uppercase tracking-[0.14em] text-stone-400">
                                 {delta}
                             </p>
                         </div>
@@ -106,7 +100,7 @@ const Dashboard = () => (
             ))}
         </section>
 
-        <section className="mt-6 grid gap-6 xl:grid-cols-[1.15fr_0.85fr]">
+        <section className="mt-4 grid gap-4 xl:grid-cols-[1.15fr_0.85fr]">
             <Card>
                 <CardHeader>
                     <CardTitle eyebrow="settlement preview">Who pays who</CardTitle>
@@ -132,16 +126,16 @@ const Dashboard = () => (
                         />
                     </div>
                     <FileUpload label="Attach receipt proof" />
-                    <Button className="w-full" icon={ShieldCheck}>
+                    <Button className="w-full rounded-lg" icon={ShieldCheck}>
                         Save for manager approval
                     </Button>
                 </div>
             </Card>
         </section>
 
-        <section className="mt-6 grid gap-6 lg:grid-cols-3">
+        <section className="mt-4 grid gap-4 lg:grid-cols-3">
             <Card tone="ink" className="lg:col-span-2">
-        <p className="text-sm font-black uppercase tracking-[0.24em] text-primary-light">room wallet rhythm</p>
+                <p className="text-sm font-black uppercase tracking-[0.24em] text-primary-light">room wallet rhythm</p>
                 <h2 className="mt-4 text-3xl font-black">Every purchase leaves a clean trail.</h2>
                 <p className="mt-3 max-w-2xl text-sm leading-6 text-white/68">
                     Personal buys become reimbursement entries, common fund purchases update the wallet,
@@ -150,11 +144,11 @@ const Dashboard = () => (
             </Card>
             <Card>
                 <div className="flex items-center gap-4">
-          <div className="grid h-14 w-14 place-items-center rounded-2xl bg-primary-light text-primary">
-            <Users className="h-7 w-7" />
-          </div>
-          <div>
-            <p className="text-sm font-bold text-stone-500">Active roommates</p>
+                    <div className="grid h-14 w-14 place-items-center rounded-2xl bg-primary-light text-primary">
+                        <Users className="h-7 w-7" />
+                    </div>
+                    <div>
+                        <p className="text-sm font-bold text-stone-500">Active roommates</p>
                         <p className="text-3xl font-black text-ink">6</p>
                     </div>
                 </div>

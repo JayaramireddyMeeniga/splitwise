@@ -17,7 +17,7 @@ const FileUpload = ({
   return (
     <label
       className={cn(
-        'block rounded-3xl border border-dashed border-stone-300 bg-surface/70 p-5 transition hover:border-primary hover:bg-primary-light',
+        'block rounded-xl border border-dashed border-stone-300 bg-surface/70 p-5 transition hover:border-primary hover:bg-primary-light',
         error && 'border-danger/30 bg-danger-light',
         className,
       )}
@@ -33,7 +33,7 @@ const FileUpload = ({
         {...props}
       />
       <div className="flex items-center gap-4">
-        <div className="grid h-14 w-14 place-items-center rounded-2xl bg-ink text-white">
+        <div className="grid h-14 w-14 place-items-center rounded-xl bg-ink text-white">
           <UploadCloud className="h-6 w-6" />
         </div>
         <div className="min-w-0 flex-1">

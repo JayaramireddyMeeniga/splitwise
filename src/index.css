@@ -1,22 +1,22 @@
 @import "tailwindcss";
 
 @theme {
-  --color-primary: #EA580C;
-  --color-primary-hover: #C2410C;
+  --color-primary: #F97316;
+  --color-primary-hover: #EA580C;
   --color-primary-light: #FFF7ED;
-  --color-secondary: #D97706;
-  --color-secondary-hover: #B45309;
+  --color-secondary: #F59E0B;
+  --color-secondary-hover: #D97706;
   --color-secondary-light: #FFFBEB;
   --color-canvas: #FAFAF9;
   --color-surface: #FFFFFF;
   --color-ink: #1C1917;
-  --color-charcoal: #292524;
+  --color-charcoal: #3A332E;
   --color-muted: #78716C;
   --color-danger: #DC2626;
   --color-danger-light: #FEF2F2;
-  --color-completed: #EA580C;
+  --color-completed: #F97316;
   --color-completed-light: #FFF7ED;
-  --shadow-soft: 0 18px 55px rgba(28, 25, 23, 0.1);
+  --shadow-soft: 0 16px 42px rgba(28, 25, 23, 0.075);
 }
 
 * {
@@ -45,15 +45,15 @@ select {
 }
 
 ::selection {
-  background: rgba(234, 88, 12, 0.22);
+  background: rgba(249, 115, 22, 0.2);
 }
 
 .ledger-grid {
   background-image:
-    radial-gradient(circle at 20% 12%, rgba(234, 88, 12, 0.13), transparent 26rem),
-    radial-gradient(circle at 82% 6%, rgba(217, 119, 6, 0.11), transparent 24rem),
-    linear-gradient(rgba(28, 25, 23, 0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(28, 25, 23, 0.04) 1px, transparent 1px);
+    radial-gradient(circle at 20% 12%, rgba(249, 115, 22, 0.085), transparent 27rem),
+    radial-gradient(circle at 82% 6%, rgba(245, 158, 11, 0.075), transparent 25rem),
+    linear-gradient(rgba(28, 25, 23, 0.032) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(28, 25, 23, 0.032) 1px, transparent 1px);
   background-attachment: fixed;
   background-size:
     auto,
@@ -72,7 +72,7 @@ select {
   inset: -1px;
   z-index: -1;
   border-radius: inherit;
-  background: linear-gradient(135deg, rgba(234, 88, 12, 0.28), rgba(255, 255, 255, 0.32), rgba(217, 119, 6, 0.22));
+  background: linear-gradient(135deg, rgba(249, 115, 22, 0.18), rgba(255, 255, 255, 0.5), rgba(245, 158, 11, 0.14));
   content: "";
 }
 
