@@ -1,30 +1,52 @@
-import { Bell, Menu, Search, UserCircle } from 'lucide-react'
+import { Bell, Plus, Search, UserCircle, WalletCards } from 'lucide-react'
 import Button from '../ui/Button'
 
-const Navbar = ({ onMenuClick, title = 'Room finances' }) => (
-  <nav className="sticky top-0 z-30 border-b border-white/60 bg-canvas/78 px-4 py-3 backdrop-blur-xl md:px-6">
-    <div className="flex items-center gap-3">
-      <Button
-        aria-label="Open navigation"
-        className="lg:hidden"
-        size="icon"
-        variant="secondary"
-        icon={Menu}
-        onClick={onMenuClick}
-      />
-      <div className="min-w-0">
-        <p className="text-xs font-black uppercase tracking-[0.2em] text-slate-400">RoomMateX</p>
-        <h2 className="truncate text-lg font-black text-ink">{title}</h2>
+const Navbar = ({ title = 'Room finances' }) => (
+  <nav className="sticky top-0 z-30 px-3 pt-3 md:px-5">
+    <div className="surface-glow animate-rise-in mx-auto flex max-w-7xl flex-col gap-4 rounded-[1.75rem] bg-white/82 p-3 shadow-[0_18px_60px_rgba(16,24,40,0.11)] ring-1 ring-white/78 backdrop-blur-2xl md:p-4 xl:flex-row xl:items-center">
+      <div className="flex min-w-0 items-center gap-3">
+        <div className="grid h-14 w-14 shrink-0 place-items-center rounded-[1.35rem] bg-ink text-base font-black text-white shadow-[0_18px_45px_rgba(16,24,40,0.22)] ring-1 ring-white/10">
+          RX
+        </div>
+        <div className="min-w-0">
+          <p className="text-xs font-black uppercase tracking-[0.2em] text-mint-dark">RoomMateX live room</p>
+          <h2 className="truncate text-2xl font-black text-ink">{title}</h2>
+        </div>
       </div>
-      <div className="ml-auto hidden py-1.5 min-w-72 items-center gap-2 rounded-sm bg-white px-4 ring-1 ring-slate-200 md:flex">
-        <Search className="h-4 w-4 text-slate-400" />
-        <input
-          className="w-full bg-transparent text-sm font-semibold text-ink outline-none placeholder:text-slate-400"
-          placeholder="Search expenses, people, bills..."
-        />
+
+      <div className="flex flex-1 flex-col gap-3 md:flex-row md:items-center xl:justify-end">
+        <div className="flex min-h-13 flex-1 items-center gap-3 rounded-[1.25rem] bg-slate-50/92 px-4 ring-1 ring-slate-200/80 transition focus-within:bg-white focus-within:ring-2 focus-within:ring-mint md:max-w-md">
+          <Search className="h-5 w-5 text-slate-400" />
+          <input
+            className="w-full bg-transparent text-sm font-semibold text-ink outline-none placeholder:text-slate-400"
+            placeholder="Search expenses, people, bills..."
+          />
+        </div>
+
+        <div className="grid grid-cols-3 overflow-hidden rounded-[1.25rem] bg-ink text-white ring-1 ring-ink/10 md:w-[26rem]">
+          <div className="px-4 py-3">
+            <p className="text-[10px] font-black uppercase tracking-[0.16em] text-slate-400">Room</p>
+            <p className="text-sm font-black">4A</p>
+          </div>
+          <div className="border-x border-white/10 px-4 py-3">
+            <p className="text-[10px] font-black uppercase tracking-[0.16em] text-slate-400">People</p>
+            <p className="text-sm font-black">6 active</p>
+          </div>
+          <div className="px-4 py-3">
+            <p className="text-[10px] font-black uppercase tracking-[0.16em] text-slate-400">Wallet</p>
+            <p className="text-sm font-black text-mint">INR 6,080</p>
+          </div>
+        </div>
+
+        <div className="flex gap-2">
+          <Button className="hidden md:inline-flex" variant="accent" icon={Plus}>
+            New entry
+          </Button>
+          <Button aria-label="Wallet" size="icon" variant="secondary" icon={WalletCards} />
+          <Button aria-label="Notifications" size="icon" variant="secondary" icon={Bell} />
+          <Button aria-label="Profile" size="icon" variant="ghost" icon={UserCircle} />
+        </div>
       </div>
-      <Button className="rounded-md p-2.5" aria-label="Notifications" size="icon" variant="secondary" icon={Bell} />
-      <Button aria-label="Profile" size="icon" variant="ghost" icon={UserCircle} />
     </div>
   </nav>
 )
