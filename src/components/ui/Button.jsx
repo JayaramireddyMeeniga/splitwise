@@ -16,7 +16,7 @@ const sizes = {
   sm: 'h-9 px-3 text-sm',
   md: 'h-11 px-4 text-sm',
   lg: 'h-12 px-5 text-base',
-  icon: 'h-10 w-10 p-0',
+  icon: 'p-0',
 }
 
 const Button = ({
@@ -38,7 +38,7 @@ const Button = ({
       type={type}
       disabled={disabled || loading}
       className={cn(
-        'inline-flex items-center justify-center gap-2 rounded-xl font-semibold transition-all duration-200 disabled:cursor-not-allowed disabled:opacity-60',
+        'inline-flex items-center justify-center gap-2 font-semibold transition-all duration-200 disabled:cursor-not-allowed disabled:opacity-60',
         variants[variant],
         sizes[size],
         className,

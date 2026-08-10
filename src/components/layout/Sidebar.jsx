@@ -74,9 +74,6 @@ const Sidebar = ({ className }) => (
       <nav className="flex-1 overflow-y-auto p-4">
         {navGroups.map((group) => (
           <div key={group.label} className="mb-5 last:mb-0">
-            <p className="mb-2 px-2 text-[10px] font-black uppercase tracking-[0.28em] text-white/32">
-              {group.label}
-            </p>
             <div className="space-y-2">
               {group.items.map(({ label, href, icon, code }) => (
                 <NavLink
@@ -109,7 +106,7 @@ const Sidebar = ({ className }) => (
                             isActive ? 'text-ink/55' : 'text-white/28',
                           )}
                         >
-                          RoomMateX / {code}
+                          RoomMateX
                         </span>
                       </span>
                       <span
