@@ -1,13 +1,10 @@
 import { BrowserRouter } from 'react-router-dom'
 import './index.css'
-import AppLayout from './components/layout/AppLayout'
-import Dashboard from './pages/Dashboard/Dashboard'
+import AppRoutes from './routes/AppRoutes'
 
 const App = () => (
   <BrowserRouter>
-    <AppLayout>
-      <Dashboard />
-    </AppLayout>
+    <AppRoutes />
   </BrowserRouter>
 )
 

@@ -25,7 +25,7 @@ const FormInput = ({
         <input
           id={inputId}
           className={cn(
-            'w-full bg-transparent py-2 text-sm font-semibold text-ink outline-none placeholder:text-stone-400',
+            'w-full bg-transparent py-1.5 text-sm font-semibold text-ink outline-none placeholder:text-sm placeholder:text-stone-400 mb-0.5',
             inputClassName,
           )}
           {...props}
