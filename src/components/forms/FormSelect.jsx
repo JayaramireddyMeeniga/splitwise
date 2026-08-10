@@ -18,8 +18,8 @@ const FormSelect = ({
       {label && <span className="mb-2 block text-sm font-bold text-ink">{label}</span>}
       <span
         className={cn(
-          'relative flex min-h-12 items-center rounded-2xl bg-white px-4 ring-1 ring-slate-200 transition focus-within:ring-2 focus-within:ring-mint',
-          error && 'ring-rose-300 focus-within:ring-rose-400',
+          'relative flex min-h-12 items-center rounded-2xl bg-surface px-4 ring-1 ring-stone-200 transition focus-within:ring-2 focus-within:ring-primary',
+          error && 'ring-danger/30 focus-within:ring-danger',
         )}
       >
         <select
@@ -34,10 +34,10 @@ const FormSelect = ({
             </option>
           ))}
         </select>
-        <ChevronDown className="pointer-events-none absolute right-4 h-4 w-4 text-slate-400" />
+        <ChevronDown className="pointer-events-none absolute right-4 h-4 w-4 text-stone-400" />
       </span>
       {(error || hint) && (
-        <span className={cn('mt-2 block text-xs font-semibold', error ? 'text-rose-600' : 'text-slate-500')}>
+        <span className={cn('mt-2 block text-xs font-semibold', error ? 'text-danger' : 'text-stone-500')}>
           {error || hint}
         </span>
       )}

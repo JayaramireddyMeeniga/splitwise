@@ -17,8 +17,8 @@ const FileUpload = ({
   return (
     <label
       className={cn(
-        'block rounded-3xl border border-dashed border-slate-300 bg-white/70 p-5 transition hover:border-mint hover:bg-mint/8',
-        error && 'border-rose-300 bg-rose-50/50',
+        'block rounded-3xl border border-dashed border-stone-300 bg-surface/70 p-5 transition hover:border-primary hover:bg-primary-light',
+        error && 'border-danger/30 bg-danger-light',
         className,
       )}
       htmlFor={inputId}
@@ -38,11 +38,11 @@ const FileUpload = ({
         </div>
         <div className="min-w-0 flex-1">
           <p className="text-sm font-black text-ink">{label}</p>
-          <p className={cn('mt-1 text-xs font-semibold', error ? 'text-rose-600' : 'text-slate-500')}>
+          <p className={cn('mt-1 text-xs font-semibold', error ? 'text-danger' : 'text-stone-500')}>
             {error || hint}
           </p>
         </div>
-        <ImagePlus className="h-5 w-5 text-slate-400" />
+        <ImagePlus className="h-5 w-5 text-stone-400" />
       </div>
     </label>
   )

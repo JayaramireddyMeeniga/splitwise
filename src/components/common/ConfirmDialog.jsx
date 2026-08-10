@@ -34,11 +34,11 @@ const ConfirmDialog = ({
       </div>
     }
   >
-    <div className="flex gap-4 rounded-2xl bg-slate-50 p-4">
-      <div className="grid h-11 w-11 shrink-0 place-items-center rounded-2xl bg-white text-amber-600">
+    <div className="flex gap-4 rounded-2xl bg-stone-50 p-4">
+      <div className="grid h-11 w-11 shrink-0 place-items-center rounded-2xl bg-surface text-secondary">
         <AlertCircle className="h-6 w-6" />
       </div>
-      <p className="text-sm leading-6 text-slate-600">{description}</p>
+      <p className="text-sm leading-6 text-stone-600">{description}</p>
     </div>
   </Modal>
 )

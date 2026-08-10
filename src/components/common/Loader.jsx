@@ -9,11 +9,11 @@ const Loader = ({ label = 'Loading RoomMateX...', fullScreen = false, className 
       className,
     )}
   >
-    <div className="flex flex-col items-center gap-4 rounded-3xl bg-white/80 px-8 py-7 text-center shadow-soft ring-1 ring-white/70 backdrop-blur-xl">
-      <div className="grid h-14 w-14 place-items-center rounded-2xl bg-mint/20 text-mint-dark">
+    <div className="flex flex-col items-center gap-4 rounded-3xl bg-surface/80 px-8 py-7 text-center shadow-soft ring-1 ring-white/70 backdrop-blur-xl">
+      <div className="grid h-14 w-14 place-items-center rounded-2xl bg-primary-light text-primary">
         <LoaderCircle className="h-7 w-7 animate-spin" />
       </div>
-      <p className="text-sm font-bold text-slate-600">{label}</p>
+      <p className="text-sm font-bold text-stone-600">{label}</p>
     </div>
   </div>
 )

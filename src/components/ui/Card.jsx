@@ -2,10 +2,10 @@ import { cn } from '../../utils/cn'
 
 const Card = ({ children, className, tone = 'plain', ...props }) => {
   const tones = {
-    plain: 'bg-white/90 ring-1 ring-slate-200/80',
-    glass: 'bg-white/72 ring-1 ring-white/70 backdrop-blur-xl',
+    plain: 'bg-surface/90 ring-1 ring-stone-200/80',
+    glass: 'bg-surface/74 ring-1 ring-white/70 backdrop-blur-xl',
     ink: 'bg-ink text-white',
-    mint: 'bg-mint/14 ring-1 ring-mint/30',
+    warm: 'bg-primary-light ring-1 ring-primary/20',
   }
 
   return (
@@ -27,7 +27,7 @@ export const CardHeader = ({ children, className }) => (
 export const CardTitle = ({ children, eyebrow, className }) => (
   <div className={className}>
     {eyebrow && (
-      <p className="mb-1 text-xs font-bold uppercase tracking-[0.22em] text-mint-dark">
+      <p className="mb-1 text-xs font-bold uppercase tracking-[0.22em] text-primary">
         {eyebrow}
       </p>
     )}

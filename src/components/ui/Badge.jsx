@@ -1,11 +1,11 @@
 import { cn } from '../../utils/cn'
 
 const tones = {
-  neutral: 'bg-slate-100 text-slate-700 ring-slate-200',
-  success: 'bg-emerald-50 text-emerald-700 ring-emerald-200',
-  warning: 'bg-amber-50 text-amber-700 ring-amber-200',
-  danger: 'bg-rose-50 text-rose-700 ring-rose-200',
-  info: 'bg-cyan-50 text-cyan-700 ring-cyan-200',
+  neutral: 'bg-stone-100 text-stone-700 ring-stone-200',
+  success: 'bg-completed-light text-primary-hover ring-primary/20',
+  warning: 'bg-secondary-light text-secondary-hover ring-secondary/20',
+  danger: 'bg-danger-light text-danger ring-danger/20',
+  info: 'bg-primary-light text-primary ring-primary/20',
   dark: 'bg-ink text-white ring-ink',
 }
 

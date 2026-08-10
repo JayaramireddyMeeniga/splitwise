@@ -3,13 +3,13 @@ import { cn } from '../../utils/cn'
 
 const variants = {
   primary:
-    'bg-ink text-white shadow-[0_18px_45px_rgba(16,24,40,0.22)] hover:-translate-y-0.5 hover:bg-charcoal active:translate-y-0',
+    'bg-primary text-white shadow-[0_18px_45px_rgba(234,88,12,0.24)] hover:-translate-y-0.5 hover:bg-primary-hover active:translate-y-0',
   secondary:
-    'bg-white/90 text-ink ring-1 ring-slate-200/90 backdrop-blur hover:-translate-y-0.5 hover:ring-ink/20 hover:shadow-soft active:translate-y-0',
+    'bg-surface/90 text-ink ring-1 ring-stone-200/90 backdrop-blur hover:-translate-y-0.5 hover:ring-primary/30 hover:shadow-soft active:translate-y-0',
   accent:
-    'bg-mint text-ink shadow-[0_16px_35px_rgba(30,213,151,0.28)] hover:-translate-y-0.5 hover:brightness-105 active:translate-y-0',
-  ghost: 'bg-transparent text-slate-600 hover:bg-white/72 hover:text-ink',
-  danger: 'bg-rose-600 text-white shadow-[0_16px_35px_rgba(225,29,72,0.25)] hover:bg-rose-700',
+    'bg-secondary text-white shadow-[0_16px_35px_rgba(217,119,6,0.25)] hover:-translate-y-0.5 hover:bg-secondary-hover active:translate-y-0',
+  ghost: 'bg-transparent text-stone-600 hover:bg-surface/72 hover:text-ink',
+  danger: 'bg-danger text-white shadow-[0_16px_35px_rgba(220,38,38,0.22)] hover:brightness-95',
 }
 
 const sizes = {

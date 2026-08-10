@@ -19,14 +19,14 @@ const FormTextarea = ({
         id={textareaId}
         rows={rows}
         className={cn(
-          'w-full resize-none rounded-2xl bg-white px-4 py-3 text-sm font-semibold text-ink outline-none ring-1 ring-slate-200 transition placeholder:text-slate-400 focus:ring-2 focus:ring-mint',
-          error && 'ring-rose-300 focus:ring-rose-400',
+          'w-full resize-none rounded-2xl bg-surface px-4 py-3 text-sm font-semibold text-ink outline-none ring-1 ring-stone-200 transition placeholder:text-stone-400 focus:ring-2 focus:ring-primary',
+          error && 'ring-danger/30 focus:ring-danger',
           textareaClassName,
         )}
         {...props}
       />
       {(error || hint) && (
-        <span className={cn('mt-2 block text-xs font-semibold', error ? 'text-rose-600' : 'text-slate-500')}>
+        <span className={cn('mt-2 block text-xs font-semibold', error ? 'text-danger' : 'text-stone-500')}>
           {error || hint}
         </span>
       )}

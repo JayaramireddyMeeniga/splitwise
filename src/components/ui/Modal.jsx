@@ -23,14 +23,14 @@ const Modal = ({
     <div className="fixed inset-0 z-50 grid place-items-center bg-ink/55 p-4 backdrop-blur-sm">
       <div
         className={cn(
-          'max-h-[90vh] w-full overflow-hidden rounded-3xl bg-white shadow-[0_30px_80px_rgba(15,23,42,0.35)]',
+          'max-h-[90vh] w-full overflow-hidden rounded-3xl bg-surface shadow-[0_30px_80px_rgba(28,25,23,0.32)]',
           sizes[size],
         )}
       >
-        <div className="flex items-start justify-between gap-4 border-b border-slate-100 px-6 py-5">
+        <div className="flex items-start justify-between gap-4 border-b border-stone-100 px-6 py-5">
           <div>
             {title && <h2 className="text-xl font-black text-ink">{title}</h2>}
-            {description && <p className="mt-1 text-sm text-slate-500">{description}</p>}
+            {description && <p className="mt-1 text-sm text-stone-500">{description}</p>}
           </div>
           <Button
             aria-label="Close modal"
@@ -41,7 +41,7 @@ const Modal = ({
           />
         </div>
         <div className="max-h-[62vh] overflow-y-auto px-6 py-5">{children}</div>
-        {footer && <div className="border-t border-slate-100 px-6 py-4">{footer}</div>}
+        {footer && <div className="border-t border-stone-100 px-6 py-4">{footer}</div>}
       </div>
     </div>
   )

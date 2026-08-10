@@ -15,32 +15,32 @@ import FileUpload from '../../components/forms/FileUpload'
 const summary = [
     {
         label: 'Monthly spend',
-        value: 'INR 18,420',
-        delta: '72% of budget',
-        icon: ReceiptText,
-        tone: 'bg-ink text-white',
-    },
+    value: 'INR 18,420',
+    delta: '72% of budget',
+    icon: ReceiptText,
+    tone: 'bg-ink text-white',
+  },
     {
         label: 'Collected',
-        value: 'INR 14,500',
-        delta: '4 members paid',
-        icon: CheckCircle2,
-        tone: 'bg-mint text-ink',
-    },
+    value: 'INR 14,500',
+    delta: '4 members paid',
+    icon: CheckCircle2,
+    tone: 'bg-primary text-white',
+  },
     {
         label: 'Pending dues',
-        value: 'INR 3,920',
-        delta: '2 reminders today',
-        icon: CircleDollarSign,
-        tone: 'bg-amber-300 text-ink',
-    },
+    value: 'INR 3,920',
+    delta: '2 reminders today',
+    icon: CircleDollarSign,
+    tone: 'bg-secondary text-white',
+  },
     {
         label: 'Wallet',
-        value: 'INR 6,080',
-        delta: 'healthy balance',
-        icon: WalletCards,
-        tone: 'bg-cyan-300 text-ink',
-    },
+    value: 'INR 6,080',
+    delta: 'healthy balance',
+    icon: WalletCards,
+    tone: 'bg-primary-light text-primary',
+  },
 ]
 
 const columns = [
@@ -92,9 +92,9 @@ const Dashboard = () => (
                 <Card key={label} className="overflow-hidden">
                     <div className="flex items-start justify-between">
                         <div>
-                            <p className="text-sm font-bold text-slate-500">{label}</p>
+              <p className="text-sm font-bold text-stone-500">{label}</p>
                             <p className="mt-3 text-2xl font-black text-ink">{value}</p>
-                            <p className="mt-1 text-xs font-bold uppercase tracking-[0.14em] text-slate-400">
+              <p className="mt-1 text-xs font-bold uppercase tracking-[0.14em] text-stone-400">
                                 {delta}
                             </p>
                         </div>
@@ -141,7 +141,7 @@ const Dashboard = () => (
 
         <section className="mt-6 grid gap-6 lg:grid-cols-3">
             <Card tone="ink" className="lg:col-span-2">
-                <p className="text-sm font-black uppercase tracking-[0.24em] text-mint">room wallet rhythm</p>
+        <p className="text-sm font-black uppercase tracking-[0.24em] text-primary-light">room wallet rhythm</p>
                 <h2 className="mt-4 text-3xl font-black">Every purchase leaves a clean trail.</h2>
                 <p className="mt-3 max-w-2xl text-sm leading-6 text-white/68">
                     Personal buys become reimbursement entries, common fund purchases update the wallet,
@@ -150,11 +150,11 @@ const Dashboard = () => (
             </Card>
             <Card>
                 <div className="flex items-center gap-4">
-                    <div className="grid h-14 w-14 place-items-center rounded-2xl bg-mint/18 text-mint-dark">
-                        <Users className="h-7 w-7" />
-                    </div>
-                    <div>
-                        <p className="text-sm font-bold text-slate-500">Active roommates</p>
+          <div className="grid h-14 w-14 place-items-center rounded-2xl bg-primary-light text-primary">
+            <Users className="h-7 w-7" />
+          </div>
+          <div>
+            <p className="text-sm font-bold text-stone-500">Active roommates</p>
                         <p className="text-3xl font-black text-ink">6</p>
                     </div>
                 </div>
