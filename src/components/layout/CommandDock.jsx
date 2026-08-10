@@ -1,7 +1,6 @@
 import { createElement } from 'react'
 import {
   BarChart3,
-  Bell,
   CreditCard,
   Home,
   ReceiptText,
@@ -13,7 +12,7 @@ import { NavLink } from 'react-router-dom'
 import { cn } from '../../utils/cn'
 
 const navItems = [
-  { label: 'Home', href: '/', icon: Home },
+  { label: 'Home', href: '/dashboard', icon: Home },
   { label: 'Rooms', href: '/rooms', icon: Users },
   { label: 'Spend', href: '/expenses', icon: ReceiptText },
   { label: 'Pay', href: '/payments', icon: CreditCard },

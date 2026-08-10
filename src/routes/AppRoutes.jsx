@@ -5,6 +5,7 @@ import Login from '../pages/Auth/Login'
 import Register from '../pages/Auth/Register'
 import RoomSetup from '../pages/Onboarding/RoomSetup'
 import JoinRoom from '../pages/Onboarding/JoinRoom'
+import RoomList from '../pages/Rooms/RoomList'
 
 const AppRoutes = () => (
   <Routes>
@@ -13,6 +14,14 @@ const AppRoutes = () => (
     <Route path="/register" element={<Register />} />
     <Route path="/room-setup" element={<RoomSetup />} />
     <Route path="/join-room" element={<JoinRoom />} />
+    <Route
+      path="/rooms"
+      element={
+        <AppLayout>
+          <RoomList />
+        </AppLayout>
+      }
+    />
     <Route
       path="/dashboard"
       element={
