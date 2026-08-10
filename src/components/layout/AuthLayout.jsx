@@ -2,7 +2,7 @@ import logo from '../../assets/split-wise-logo.png'
 
 const AuthLayout = ({ children, title = 'Welcome back', subtitle }) => (
   <main className="ledger-grid grid min-h-screen place-items-center bg-canvas px-4 py-6 text-ink">
-    <div className="mx-auto grid w-full gap-1 max-w-5xl overflow-hidden rounded-3xl border border-stone-200/80 bg-surface/80 shadow-[0_20px_60px_rgba(28,25,23,0.09)] backdrop-blur-2xl lg:grid-cols-[0.86fr_1.14fr]">
+    <div className="mx-auto grid w-full max-w-4xl overflow-hidden rounded-3xl border border-stone-200/80 bg-surface/80 shadow-[0_20px_60px_rgba(28,25,23,0.09)] backdrop-blur-2xl lg:grid-cols-2">
       <section className="relative hidden overflow-hidden bg-charcoal p-6 text-white lg:flex lg:flex-col lg:justify-between">
         <div className="absolute inset-0 opacity-20 ledger-grid" />
         <div className="flex gap-3 items-center relative">
