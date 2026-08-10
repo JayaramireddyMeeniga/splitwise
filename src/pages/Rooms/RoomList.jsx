@@ -2,10 +2,14 @@ import { createElement } from 'react'
 import {
   ArrowRight,
   Building2,
+  CalendarDays,
   CheckCircle2,
+  Clipboard,
   Home,
   Mail,
   Plus,
+  Settings2,
+  ShieldCheck,
   Trash2,
   UserRound,
   Users,
@@ -21,6 +25,18 @@ const roomSteps = [
   { label: 'Create room', icon: Building2 },
   { label: 'Add people', icon: Users },
   { label: 'Open ledger', icon: CheckCircle2 },
+]
+
+const roomOptions = [
+  { label: 'Split mode', value: 'Equal by default', icon: Settings2 },
+  { label: 'Rent due', value: '5th every month', icon: CalendarDays },
+  { label: 'Approval', value: 'Required above INR 1,000', icon: ShieldCheck },
+]
+
+const sampleMembers = [
+  { name: 'Rahul Sharma', role: 'Maintainer', status: 'Owner' },
+  { name: 'Arun Kumar', role: 'Roommate', status: 'Invited' },
+  { name: 'Sai Teja', role: 'Roommate', status: 'Active' },
 ]
 
 const RoomList = () => {
@@ -106,6 +122,49 @@ const RoomList = () => {
             </div>
           </Card>
         ))}
+      </section>
+
+      <section className="mb-4 grid gap-4 xl:grid-cols-[0.82fr_1.18fr]">
+        <Card className="p-4 shadow-none">
+          <CardHeader className="mb-3">
+            <CardTitle eyebrow="invite">Room code</CardTitle>
+            <Clipboard className="h-4 w-4 text-primary" />
+          </CardHeader>
+          <div className="rounded-2xl bg-primary-light p-4">
+            <p className="text-[11px] font-black uppercase tracking-[0.2em] text-primary">
+              share with roommates
+            </p>
+            <div className="mt-2 flex items-center justify-between gap-3">
+              <p className="text-2xl font-black text-ink">RX-4A-8291</p>
+              <Button size="sm" variant="secondary" className="rounded-lg" icon={Clipboard}>
+                Copy
+              </Button>
+            </div>
+            <p className="mt-2 text-xs font-semibold leading-5 text-stone-600">
+              Roommates can join only after the maintainer creates this room.
+            </p>
+          </div>
+        </Card>
+
+        <Card className="p-4 shadow-none">
+          <CardHeader className="mb-3">
+            <CardTitle eyebrow="room controls">Defaults</CardTitle>
+            <Badge tone="warning">Editable later</Badge>
+          </CardHeader>
+          <div className="grid gap-3 md:grid-cols-3">
+            {roomOptions.map(({ label, value, icon }) => (
+              <div key={label} className="rounded-xl border border-stone-200 bg-stone-50/70 p-3">
+                <div className="mb-3 grid h-9 w-9 place-items-center rounded-lg bg-surface text-primary">
+                  {createElement(icon, { className: 'h-4 w-4' })}
+                </div>
+                <p className="text-[11px] font-black uppercase tracking-[0.16em] text-stone-400">
+                  {label}
+                </p>
+                <p className="mt-1 text-xs font-black leading-5 text-ink">{value}</p>
+              </div>
+            ))}
+          </div>
+        </Card>
       </section>
 
       <form className="grid gap-4 xl:grid-cols-[0.92fr_1.08fr]" onSubmit={handleCreateRoom}>
@@ -225,12 +284,60 @@ const RoomList = () => {
           </div>
         </Card>
 
-        <div className="xl:col-span-2">
-          <Button className="w-full rounded-xl" icon={ArrowRight} iconPosition="right" type="submit">
+        <div className="flex justify-center xl:col-span-2">
+          <Button className="min-w-56 rounded-xl px-8" icon={ArrowRight} iconPosition="right" type="submit">
             Create room
           </Button>
         </div>
       </form>
+
+      <section className="mt-4 grid gap-4 xl:grid-cols-[1.15fr_0.85fr]">
+        <Card className="p-4 shadow-none">
+          <CardHeader className="mb-3">
+            <CardTitle eyebrow="members">Room people</CardTitle>
+            <Badge tone="neutral">{sampleMembers.length + invites.length} total</Badge>
+          </CardHeader>
+          <div className="grid gap-2">
+            {[...sampleMembers, ...invites.map((invite) => ({ ...invite, role: 'Roommate', status: 'Draft' }))].map((member) => (
+              <div
+                key={`${member.name}-${member.status}`}
+                className="flex items-center justify-between gap-3 rounded-xl border border-stone-200 bg-stone-50/70 px-3 py-2"
+              >
+                <div className="flex min-w-0 items-center gap-3">
+                  <div className="grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-primary-light text-primary">
+                    <UserRound className="h-4 w-4" />
+                  </div>
+                  <div className="min-w-0">
+                    <p className="truncate text-xs font-black text-ink">{member.name}</p>
+                    <p className="truncate text-xs font-semibold text-stone-500">{member.role}</p>
+                  </div>
+                </div>
+                <Badge tone={member.status === 'Owner' ? 'dark' : member.status === 'Active' ? 'success' : 'info'}>
+                  {member.status}
+                </Badge>
+              </div>
+            ))}
+          </div>
+        </Card>
+
+        <Card className="p-4 shadow-none">
+          <CardHeader className="mb-3">
+            <CardTitle eyebrow="maintainer">Quick actions</CardTitle>
+            <Settings2 className="h-4 w-4 text-primary" />
+          </CardHeader>
+          <div className="grid gap-2">
+            {['Generate invite link', 'Transfer ownership', 'Set rent due date', 'Archive inactive member'].map((action) => (
+              <button
+                key={action}
+                type="button"
+                className="rounded-xl border border-stone-200 bg-stone-50/70 px-3 py-2.5 text-left text-xs font-black text-ink transition hover:border-primary/30 hover:bg-primary-light"
+              >
+                {action}
+              </button>
+            ))}
+          </div>
+        </Card>
+      </section>
     </div>
   )
 }

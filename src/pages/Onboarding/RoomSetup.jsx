@@ -186,7 +186,7 @@ const RoomSetup = () => {
           </div>
         </Card>
 
-        <Button className="w-full rounded-xl" icon={ArrowRight} iconPosition="right" type="submit">
+        <Button className="mx-auto min-w-52 rounded-xl px-8" icon={ArrowRight} iconPosition="right" type="submit">
           Create room
         </Button>
 
