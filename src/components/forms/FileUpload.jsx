@@ -17,7 +17,7 @@ const FileUpload = ({
   return (
     <label
       className={cn(
-        'block rounded-xl border border-dashed border-stone-300 bg-surface/70 p-5 transition hover:border-primary hover:bg-primary-light',
+        'block rounded-xl border border-dashed border-stone-300 bg-surface/70 p-4 transition hover:border-primary hover:bg-primary-light',
         error && 'border-danger/30 bg-danger-light',
         className,
       )}

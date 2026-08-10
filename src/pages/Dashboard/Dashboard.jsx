@@ -1,7 +1,7 @@
 import { createElement } from 'react'
 import {
-    ArrowUpRight, CalendarDays, CheckCircle2, CircleDollarSign, Plus,
-    ReceiptText, ShieldCheck, Users, WalletCards,
+    AlertCircle, ArrowUpRight, CalendarDays, CheckCircle2, CircleDollarSign,
+    Clock3, Plus, ReceiptText, ShieldCheck, Users, WalletCards,
 } from 'lucide-react'
 import Card, { CardHeader, CardTitle } from '../../components/ui/Card'
 import Button from '../../components/ui/Button'
@@ -63,6 +63,36 @@ const settlements = [
     { name: 'Sai', paid: 'INR 3,000', share: 'INR 3,000', status: 'Settled' },
 ]
 
+const dashboardActions = [
+    {
+        label: 'Budget used',
+        value: '72%',
+        detail: 'INR 3,580 left from INR 22,000',
+        icon: CircleDollarSign,
+        tone: 'bg-primary-light text-primary',
+    },
+    {
+        label: 'Unpaid members',
+        value: '2',
+        detail: 'Arun and Naveen need reminders',
+        icon: AlertCircle,
+        tone: 'bg-secondary-light text-secondary-hover',
+    },
+    {
+        label: 'Reimbursements',
+        value: '3',
+        detail: 'INR 1,840 waiting for approval',
+        icon: ReceiptText,
+        tone: 'bg-primary-light text-primary',
+    },
+]
+
+const upcomingBills = [
+    { label: 'Rent', due: 'Aug 5', amount: 'INR 12,000' },
+    { label: 'Internet', due: 'Aug 10', amount: 'INR 999' },
+    { label: 'Electricity', due: 'Aug 14', amount: 'Estimate pending' },
+]
+
 const Dashboard = () => (
     <>
         <section className="mb-4 flex flex-col gap-3 rounded-xl border border-stone-200/80 bg-surface/70 px-4 py-3 shadow-[0_12px_34px_rgba(28,25,23,0.055)] backdrop-blur-xl md:flex-row md:items-center md:justify-between">
@@ -104,7 +134,7 @@ const Dashboard = () => (
             <Card>
                 <CardHeader>
                     <CardTitle eyebrow="settlement preview">Who pays who</CardTitle>
-                    <Button variant="ghost" icon={ArrowUpRight}>
+                    <Button variant="ghost" className="font-semibold" icon={ArrowUpRight}>
                         Open report
                     </Button>
                 </CardHeader>
@@ -134,22 +164,57 @@ const Dashboard = () => (
         </section>
 
         <section className="mt-4 grid gap-4 lg:grid-cols-3">
-            <Card tone="ink" className="lg:col-span-2">
-                <p className="text-sm font-black uppercase tracking-[0.24em] text-primary-light">room wallet rhythm</p>
-                <h2 className="mt-4 text-3xl font-black">Every purchase leaves a clean trail.</h2>
-                <p className="mt-3 max-w-2xl text-sm leading-6 text-white/68">
-                    Personal buys become reimbursement entries, common fund purchases update the wallet,
-                    and monthly settlements stay transparent for everyone.
-                </p>
+            <Card className="lg:col-span-2">
+                <CardHeader>
+                    <CardTitle eyebrow="manager focus">Needs attention</CardTitle>
+                    <Badge tone="warning">5 open items</Badge>
+                </CardHeader>
+                <div className="grid gap-3 md:grid-cols-3">
+                    {dashboardActions.map(({ label, value, detail, icon, tone }) => (
+                        <div
+                            key={label}
+                            className="rounded-lg border border-stone-200 bg-stone-50/70 px-4 py-3"
+                        >
+                            <div className="flex items-center justify-between gap-3">
+                                <p className="text-sm font-bold text-stone-500">{label}</p>
+                                <div className={`grid p-2.5 place-items-center rounded-lg ${tone}`}>
+                                    {createElement(icon, { className: 'h-5 w-5' })}
+                                </div>
+                            </div>
+                            <p className="text-2xl font-black text-ink">{value}</p>
+                            <p className="mt-0.5 text-xs font-semibold leading-5 text-stone-500">{detail}</p>
+                        </div>
+                    ))}
+                </div>
             </Card>
             <Card>
-                <div className="flex items-center gap-4">
-                    <div className="grid h-14 w-14 place-items-center rounded-xl bg-primary-light text-primary">
-                        <Users className="h-7 w-7" />
-                    </div>
-                    <div>
-                        <p className="text-sm font-bold text-stone-500">Active roommates</p>
-                        <p className="text-3xl font-black text-ink">6</p>
+                <CardHeader>
+                    <CardTitle eyebrow="upcoming">Bill reminders</CardTitle>
+                    <Clock3 className="h-5 w-5 text-primary" />
+                </CardHeader>
+                <div className="space-y-2.5">
+                    {upcomingBills.map((bill) => (
+                        <div
+                            key={bill.label}
+                            className="flex items-center justify-between gap-3 rounded-lg border border-stone-200 bg-surface px-3 py-2"
+                        >
+                            <div>
+                                <p className="text-sm font-black text-ink">{bill.label}</p>
+                                <p className="text-xs font-semibold text-stone-500">Due {bill.due}</p>
+                            </div>
+                            <p className="text-right text-sm font-bold text-stone-700">{bill.amount}</p>
+                        </div>
+                    ))}
+                    <div className="rounded-xl bg-primary-light px-3 py-3">
+                        <div className="flex items-center gap-3">
+                            <div className="grid h-10 w-10 place-items-center rounded-lg bg-surface text-primary">
+                                <Users className="h-5 w-5" />
+                            </div>
+                            <div>
+                                <p className="text-sm font-black text-ink">6 active roommates</p>
+                                <p className="text-xs font-semibold text-stone-600">All settlement shares are calculated for this room.</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </Card>

@@ -19,13 +19,13 @@ const navItems = [
   { label: 'Pay', href: '/payments', icon: CreditCard },
   { label: 'Wallet', href: '/wallet', icon: WalletCards },
   { label: 'Reports', href: '/reports', icon: BarChart3 },
-  { label: 'Alerts', href: '/notifications', icon: Bell },
+  // { label: 'Alerts', href: '/notifications', icon: Bell },
   { label: 'Setup', href: '/settings', icon: Settings },
 ]
 
 const CommandDock = () => (
   <div className="pointer-events-none fixed inset-x-0 bottom-5 z-40 px-3">
-    <nav className="animate-dock-in pointer-events-auto mx-auto flex max-w-5xl items-center gap-2 overflow-x-auto rounded-3xl border border-white/16 bg-charcoal/92 p-2.5 shadow-[0_22px_58px_rgba(28,25,23,0.28)] backdrop-blur-2xl">
+    <nav className="animate-dock-in pointer-events-auto mx-auto flex max-w-4xl items-center gap-5 overflow-x-auto rounded-3xl border border-white/16 bg-charcoal/92 p-2.5 shadow-[0_22px_58px_rgba(28,25,23,0.28)] backdrop-blur-2xl">
       <div className="hidden shrink-0 items-center gap-3 border-r border-white/10 px-3 pr-5 md:flex">
         <div className="grid p-3 place-items-center rounded-xl bg-primary text-base font-black text-white shadow-[0_10px_22px_rgba(249,115,22,0.22)]">
           RX
@@ -42,7 +42,7 @@ const CommandDock = () => (
           to={href}
           className={({ isActive }) =>
             cn(
-              'group flex min-w-16 flex-col items-center justify-center gap-1 rounded-2xl px-3 py-2 text-[11px] font-black transition md:min-w-20',
+              'group flex flex-col items-center justify-center gap-1 rounded-2xl px-5 py-2 text-[11px] font-black transition',
               isActive
                 ? 'bg-primary text-white shadow-[0_12px_26px_rgba(249,115,22,0.22)]'
                 : 'text-white/62 hover:-translate-y-1 hover:bg-white/10 hover:text-white',

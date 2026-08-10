@@ -8,7 +8,7 @@ const variants = {
     'bg-surface/90 text-ink ring-1 ring-stone-200/90 backdrop-blur hover:-translate-y-0.5 hover:ring-primary/30 hover:shadow-soft active:translate-y-0',
   accent:
     'bg-secondary text-white shadow-[0_14px_32px_rgba(245,158,11,0.2)] hover:-translate-y-0.5 hover:bg-secondary-hover active:translate-y-0',
-  ghost: 'bg-transparent text-stone-600 hover:bg-surface/72 hover:text-ink',
+  ghost: 'bg-transparent text-stone-600 hover:bg-surface/72 hover:text-ink font-semibold active:bg-surface/80',
   danger: 'bg-danger text-white shadow-[0_16px_35px_rgba(220,38,38,0.22)] hover:brightness-95',
 }
 

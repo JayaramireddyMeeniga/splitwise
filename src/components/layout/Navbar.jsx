@@ -24,7 +24,7 @@ const Navbar = () => {
           </div>
           <div className="min-w-0 border-l border-stone-200">
             <p className="text-xs font-black uppercase tracking-[0.2em] text-primary">RoomMateX live room</p>
-            <h2 className="truncate uppercase text-md font-bold text-ink md:text-lg">
+            <h2 className="truncate uppercase text-md font-bold text-ink md:text-[17px]">
               {ledgerMonth} <span className="font-bold text-stone-500">room ledger</span>
             </h2>
           </div>

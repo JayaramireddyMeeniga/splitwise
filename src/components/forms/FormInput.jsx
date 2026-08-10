@@ -21,7 +21,7 @@ const FormInput = ({
           error && 'ring-danger/30 focus-within:ring-danger',
         )}
       >
-        {Icon && <Icon className="h-5 w-5 shrink-0 text-stone-400" />}
+        {Icon && <Icon className="h-4 w-4 shrink-0 text-stone-400" />}
         <input
           id={inputId}
           className={cn(
