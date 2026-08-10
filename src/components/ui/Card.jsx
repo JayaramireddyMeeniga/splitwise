@@ -10,7 +10,7 @@ const Card = ({ children, className, tone = 'plain', ...props }) => {
 
   return (
     <section
-      className={cn('rounded-2xl p-5 shadow-soft', tones[tone], className)}
+      className={cn('rounded-xl px-4.5 py-4 shadow-soft', tones[tone], className)}
       {...props}
     >
       {children}
@@ -19,7 +19,7 @@ const Card = ({ children, className, tone = 'plain', ...props }) => {
 }
 
 export const CardHeader = ({ children, className }) => (
-  <div className={cn('mb-4 flex items-start justify-between gap-4', className)}>
+  <div className={cn('mb-2.5 flex items-start justify-between gap-4', className)}>
     {children}
   </div>
 )

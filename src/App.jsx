@@ -5,7 +5,7 @@ import Dashboard from './pages/Dashboard/Dashboard'
 
 const App = () => (
   <BrowserRouter>
-    <AppLayout title="August room ledger">
+    <AppLayout>
       <Dashboard />
     </AppLayout>
   </BrowserRouter>

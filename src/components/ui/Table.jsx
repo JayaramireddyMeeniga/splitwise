@@ -1,7 +1,7 @@
 import { cn } from '../../utils/cn'
 
 const Table = ({ columns = [], data = [], emptyMessage = 'No records found.', className }) => (
-  <div className={cn('overflow-hidden rounded-2xl ring-1 ring-stone-200', className)}>
+  <div className={cn('overflow-hidden rounded-lg ring-1 ring-stone-200', className)}>
     <div className="overflow-x-auto">
       <table className="min-w-full divide-y divide-stone-100 bg-surface">
         <thead className="bg-stone-50">
@@ -27,7 +27,7 @@ const Table = ({ columns = [], data = [], emptyMessage = 'No records found.', cl
             data.map((row, rowIndex) => (
               <tr key={row.id || row._id || rowIndex} className="transition hover:bg-primary-light">
                 {columns.map((column) => (
-                  <td key={column.key} className="whitespace-nowrap px-4 py-4 text-sm text-stone-700">
+                  <td key={column.key} className="whitespace-nowrap px-4 py-3 text-sm text-stone-700">
                     {column.render ? column.render(row, rowIndex) : row[column.key]}
                   </td>
                 ))}

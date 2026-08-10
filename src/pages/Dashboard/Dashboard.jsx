@@ -65,17 +65,17 @@ const settlements = [
 
 const Dashboard = () => (
     <>
-        <section className="mb-4 flex flex-col gap-3 rounded-[1.35rem] border border-stone-200/80 bg-surface/70 px-4 py-3 shadow-[0_12px_34px_rgba(28,25,23,0.055)] backdrop-blur-xl md:flex-row md:items-center md:justify-between">
+        <section className="mb-4 flex flex-col gap-3 rounded-xl border border-stone-200/80 bg-surface/70 px-4 py-3 shadow-[0_12px_34px_rgba(28,25,23,0.055)] backdrop-blur-xl md:flex-row md:items-center md:justify-between">
             <div className="flex flex-wrap gap-2">
                 <Badge tone="dark">6 active roommates</Badge>
                 <Badge tone="success">Wallet healthy</Badge>
                 <Badge tone="warning">Rent due Aug 5</Badge>
             </div>
             <div className="flex flex-wrap gap-2 md:justify-end">
-                <Button className="rounded-xl" variant="secondary" icon={CalendarDays}>
+                <Button className="rounded-md" variant="secondary" icon={CalendarDays}>
                     View month
                 </Button>
-                <Button className="rounded-xl" icon={Plus}>
+                <Button className="rounded-md" icon={Plus}>
                     Add expense
                 </Button>
             </div>
@@ -87,13 +87,13 @@ const Dashboard = () => (
                     <div className="flex items-start justify-between">
                         <div>
                             <p className="text-sm font-bold text-stone-500">{label}</p>
-                            <p className="mt-3 text-2xl font-black text-ink">{value}</p>
-                            <p className="mt-1 text-xs font-bold uppercase tracking-[0.14em] text-stone-400">
+                            <p className="mt-0.5 text-lg font-bold text-ink">{value}</p>
+                            <p className="text-xs font-semibold uppercase tracking-[0.14em] text-stone-400">
                                 {delta}
                             </p>
                         </div>
-                        <div className={`grid h-12 w-12 place-items-center rounded-lg ${tone}`}>
-                            {createElement(icon, { className: 'h-6 w-6' })}
+                        <div className={`grid p-2.5 place-items-center rounded-md ${tone}`}>
+                            {createElement(icon, { className: 'h-4.5 w-4.5' })}
                         </div>
                     </div>
                 </Card>
@@ -144,7 +144,7 @@ const Dashboard = () => (
             </Card>
             <Card>
                 <div className="flex items-center gap-4">
-                    <div className="grid h-14 w-14 place-items-center rounded-2xl bg-primary-light text-primary">
+                    <div className="grid h-14 w-14 place-items-center rounded-xl bg-primary-light text-primary">
                         <Users className="h-7 w-7" />
                     </div>
                     <div>
