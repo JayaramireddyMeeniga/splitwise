@@ -6,6 +6,15 @@ import Register from '../pages/Auth/Register'
 import RoomSetup from '../pages/Onboarding/RoomSetup'
 import JoinRoom from '../pages/Onboarding/JoinRoom'
 import RoomList from '../pages/Rooms/RoomList'
+import CreateRoom from '../pages/Rooms/CreateRoom'
+import RoomsJoinRoom from '../pages/Rooms/JoinRoom'
+import RoomDetails from '../pages/Rooms/RoomDetails'
+import ExpenseList from '../pages/Expenses/ExpenseList'
+import PaymentList from '../pages/Payments/PaymentList'
+import Wallet from '../pages/Wallet/Wallet'
+import Reports from '../pages/Reports/Reports'
+import Settings from '../pages/Settings/Settings'
+import Profile from '../pages/Profile/Profile'
 
 const AppRoutes = () => (
   <Routes>
@@ -19,6 +28,78 @@ const AppRoutes = () => (
       element={
         <AppLayout>
           <RoomList />
+        </AppLayout>
+      }
+    />
+    <Route
+      path="/rooms/create"
+      element={
+        <AppLayout>
+          <CreateRoom />
+        </AppLayout>
+      }
+    />
+    <Route
+      path="/rooms/join"
+      element={
+        <AppLayout>
+          <RoomsJoinRoom />
+        </AppLayout>
+      }
+    />
+    <Route
+      path="/rooms/:roomId"
+      element={
+        <AppLayout>
+          <RoomDetails />
+        </AppLayout>
+      }
+    />
+    <Route
+      path="/expenses"
+      element={
+        <AppLayout>
+          <ExpenseList />
+        </AppLayout>
+      }
+    />
+    <Route
+      path="/payments"
+      element={
+        <AppLayout>
+          <PaymentList />
+        </AppLayout>
+      }
+    />
+    <Route
+      path="/wallet"
+      element={
+        <AppLayout>
+          <Wallet />
+        </AppLayout>
+      }
+    />
+    <Route
+      path="/reports"
+      element={
+        <AppLayout>
+          <Reports />
+        </AppLayout>
+      }
+    />
+    <Route
+      path="/settings"
+      element={
+        <AppLayout>
+          <Settings />
+        </AppLayout>
+      }
+    />
+    <Route
+      path="/profile"
+      element={
+        <AppLayout>
+          <Profile />
         </AppLayout>
       }
     />

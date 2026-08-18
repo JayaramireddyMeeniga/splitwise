@@ -1,4 +1,6 @@
-import { Bell, Plus, Search, UserCircle2, WalletCards } from 'lucide-react'
+import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { Bell, LogOut, Plus, Search, UserCircle2, WalletCards } from 'lucide-react'
 import Button from '../ui/Button'
 import logo from '../../assets/split-wise-logo.png'
 
@@ -10,6 +12,26 @@ const getLedgerMonth = () =>
 
 const Navbar = () => {
   const ledgerMonth = getLedgerMonth()
+  const navigate = useNavigate()
+  const [profileOpen, setProfileOpen] = useState(false)
+
+  const handleNewEntry = () => {
+    navigate('/expenses', {
+      state: {
+        focusExpenseEntry: Date.now(),
+      },
+    })
+  }
+
+  const handleProfile = () => {
+    setProfileOpen(false)
+    navigate('/profile')
+  }
+
+  const handleLogout = () => {
+    setProfileOpen(false)
+    navigate('/login')
+  }
 
   return (
     <nav className="sticky top-0 z-30 px-3 pt-3 md:px-5">
@@ -55,12 +77,46 @@ const Navbar = () => {
         </div> */}
 
           <div className="flex gap-2">
-            <Button className="hidden rounded-lg md:inline-flex" variant="accent" icon={Plus}>
+            <Button
+              className="hidden rounded-lg md:inline-flex"
+              variant="accent"
+              icon={Plus}
+              onClick={handleNewEntry}
+            >
               New Entry
             </Button>
             <Button className="rounded-lg" aria-label="Wallet" size="icon" variant="secondary" icon={WalletCards} />
             <Button className="rounded-lg" aria-label="Notifications" size="icon" variant="secondary" icon={Bell} />
-            <Button className="rounded-lg" aria-label="Profile" size="icon" variant="secondary" icon={UserCircle2} />
+            <div className="relative">
+              <Button
+                className="rounded-lg"
+                aria-label="Profile menu"
+                size="icon"
+                variant="secondary"
+                icon={UserCircle2}
+                onClick={() => setProfileOpen((open) => !open)}
+              />
+              {profileOpen && (
+                <div className="absolute right-0 top-12 z-50 w-44 overflow-hidden rounded-xl border border-stone-200 bg-surface p-1.5 shadow-[0_18px_50px_rgba(28,25,23,0.16)]">
+                  <button
+                    type="button"
+                    onClick={handleProfile}
+                    className="flex w-full items-center gap-2 rounded-lg px-3 py-2 text-left text-xs font-black text-ink transition hover:bg-primary-light hover:text-primary"
+                  >
+                    <UserCircle2 className="h-4 w-4" />
+                    Profile
+                  </button>
+                  <button
+                    type="button"
+                    onClick={handleLogout}
+                    className="flex w-full items-center gap-2 rounded-lg px-3 py-2 text-left text-xs font-black text-ink transition hover:bg-danger-light hover:text-danger"
+                  >
+                    <LogOut className="h-4 w-4" />
+                    Logout
+                  </button>
+                </div>
+              )}
+            </div>
           </div>
         </div>
       </div>

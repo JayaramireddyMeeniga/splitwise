@@ -1,4 +1,5 @@
 import { createElement } from 'react'
+import { Link } from 'react-router-dom'
 import {
   ArrowRight,
   Building2,
@@ -103,6 +104,16 @@ const RoomList = () => {
         <div className="flex flex-wrap gap-2">
           <Badge tone="dark">Maintainer</Badge>
           <Badge tone="info">{invites.length} roommates</Badge>
+          <Link to="/rooms/create">
+            <Button size="sm" className="rounded-lg" icon={Plus}>
+              New room
+            </Button>
+          </Link>
+          <Link to="/rooms/join">
+            <Button size="sm" variant="secondary" className="rounded-lg">
+              Join
+            </Button>
+          </Link>
         </div>
       </section>
 
@@ -136,9 +147,16 @@ const RoomList = () => {
             </p>
             <div className="mt-2 flex items-center justify-between gap-3">
               <p className="text-2xl font-black text-ink">RX-4A-8291</p>
-              <Button size="sm" variant="secondary" className="rounded-lg" icon={Clipboard}>
-                Copy
-              </Button>
+              <div className="flex gap-2">
+                <Button size="sm" variant="secondary" className="rounded-lg" icon={Clipboard}>
+                  Copy
+                </Button>
+                <Link to="/rooms/room-4a">
+                  <Button size="sm" className="rounded-lg">
+                    Details
+                  </Button>
+                </Link>
+              </div>
             </div>
             <p className="mt-2 text-xs font-semibold leading-5 text-stone-600">
               Roommates can join only after the maintainer creates this room.
