@@ -9,7 +9,9 @@ const initialDraft = {
   paidBy: '',
   splitMethod: '',
   date: today,
+  members: ['Rahul', 'Arun', 'Sai', 'Naveen'],
   notes: '',
+  receiptName: '',
 }
 
 const initialExpenses = [
@@ -20,6 +22,10 @@ const initialExpenses = [
     category: 'Groceries',
     paidBy: 'Rahul',
     splitMethod: 'Equal split',
+    members: ['Rahul', 'Arun', 'Sai', 'Naveen'],
+    date: '2026-08-12',
+    notes: 'Weekly produce and dairy restock.',
+    receiptName: 'grocery-receipt.jpg',
     status: 'Approved',
   },
   {
@@ -29,6 +35,10 @@ const initialExpenses = [
     category: 'Internet',
     paidBy: 'Arun',
     splitMethod: 'Equal split',
+    members: ['Rahul', 'Arun', 'Sai', 'Naveen'],
+    date: '2026-08-08',
+    notes: 'Monthly fiber bill.',
+    receiptName: 'internet-aug.pdf',
     status: 'Pending',
   },
   {
@@ -38,11 +48,15 @@ const initialExpenses = [
     category: 'Household',
     paidBy: 'Sai',
     splitMethod: 'Selected members',
+    members: ['Rahul', 'Sai', 'Naveen'],
+    date: '2026-08-02',
+    notes: 'Kitchen and bathroom supplies.',
+    receiptName: '',
     status: 'Approved',
   },
 ]
 
-export const useExpenseStore = create((set) => ({
+export const useExpenseStore = create((set, get) => ({
   draft: initialDraft,
   expenses: initialExpenses,
   errors: {},
@@ -57,20 +71,74 @@ export const useExpenseStore = create((set) => ({
         [field]: undefined,
       },
     })),
+  toggleDraftMember: (member) =>
+    set((state) => {
+      const members = state.draft.members.includes(member)
+        ? state.draft.members.filter((name) => name !== member)
+        : [...state.draft.members, member]
+
+      return {
+        draft: {
+          ...state.draft,
+          members,
+        },
+        errors: {
+          ...state.errors,
+          members: undefined,
+        },
+      }
+    }),
+  setReceiptName: (receiptName) =>
+    set((state) => ({
+      draft: {
+        ...state.draft,
+        receiptName,
+      },
+    })),
   setErrors: (errors) => set({ errors }),
   addExpense: (expense) =>
+    set((state) => {
+      const savedExpense = {
+        id: `exp-${Date.now()}`,
+        status: Number(expense.amount) > 1000 ? 'Pending' : 'Approved',
+        ...expense,
+        amount: Number(expense.amount),
+        members: expense.members?.length ? expense.members : initialDraft.members,
+      }
+
+      return {
+        expenses: [
+          savedExpense,
+          ...state.expenses,
+        ],
+        draft: initialDraft,
+        errors: {},
+        lastAddedExpenseId: savedExpense.id,
+      }
+    }),
+  getExpenseById: (expenseId) =>
+    get().expenses.find((expense) => expense.id === expenseId),
+  removeExpense: (expenseId) =>
     set((state) => ({
-      expenses: [
-        {
-          id: `exp-${Date.now()}`,
-          status: Number(expense.amount) > 1000 ? 'Pending' : 'Approved',
-          ...expense,
-          amount: Number(expense.amount),
-        },
-        ...state.expenses,
-      ],
-      draft: initialDraft,
-      errors: {},
+      expenses: state.expenses.filter((expense) => expense.id !== expenseId),
     })),
+  duplicateExpense: (expenseId) =>
+    set((state) => {
+      const expense = state.expenses.find((item) => item.id === expenseId)
+
+      if (!expense) return state
+
+      return {
+        expenses: [
+          {
+            ...expense,
+            id: `exp-${Date.now()}`,
+            title: `${expense.title} copy`,
+            status: 'Pending',
+          },
+          ...state.expenses,
+        ],
+      }
+    }),
   resetDraft: () => set({ draft: initialDraft, errors: {} }),
 }))

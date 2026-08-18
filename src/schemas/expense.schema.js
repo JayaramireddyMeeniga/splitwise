@@ -14,7 +14,9 @@ export const expenseSchema = z.object({
   paidBy: z.string().min(1, 'Choose who paid'),
   splitMethod: z.string().min(1, 'Choose a split method'),
   date: z.string().min(1, 'Choose a date'),
-  notes: z.string().max(140, 'Notes are too long').optional(),
+  members: z.array(z.string()).min(1, 'Choose at least one roommate'),
+  notes: z.string().max(180, 'Notes are too long').optional(),
+  receiptName: z.string().optional(),
 })
 
 export const mapExpenseErrors = (error) =>

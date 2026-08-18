@@ -10,6 +10,8 @@ import CreateRoom from '../pages/Rooms/CreateRoom'
 import RoomsJoinRoom from '../pages/Rooms/JoinRoom'
 import RoomDetails from '../pages/Rooms/RoomDetails'
 import ExpenseList from '../pages/Expenses/ExpenseList'
+import AddExpense from '../pages/Expenses/AddExpense'
+import ExpenseDetails from '../pages/Expenses/ExpenseDetails'
 import PaymentList from '../pages/Payments/PaymentList'
 import Wallet from '../pages/Wallet/Wallet'
 import Reports from '../pages/Reports/Reports'
@@ -60,6 +62,22 @@ const AppRoutes = () => (
       element={
         <AppLayout>
           <ExpenseList />
+        </AppLayout>
+      }
+    />
+    <Route
+      path="/expenses/add"
+      element={
+        <AppLayout>
+          <AddExpense />
+        </AppLayout>
+      }
+    />
+    <Route
+      path="/expenses/:expenseId"
+      element={
+        <AppLayout>
+          <ExpenseDetails />
         </AppLayout>
       }
     />
