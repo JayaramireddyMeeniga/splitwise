@@ -16,7 +16,11 @@ const Navbar = () => {
   const [profileOpen, setProfileOpen] = useState(false)
 
   const handleNewEntry = () => {
-    navigate('/expenses/add')
+    navigate('/expenses', {
+      state: {
+        openExpenseDialog: Date.now(),
+      },
+    })
   }
 
   const handleProfile = () => {

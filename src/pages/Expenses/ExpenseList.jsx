@@ -1,13 +1,15 @@
-import { createElement, useMemo } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { createElement, useEffect, useMemo, useState } from 'react'
+import { createPortal } from 'react-dom'
+import { Link, useLocation } from 'react-router-dom'
 import {
-  ArrowUpRight, CalendarDays, CircleDollarSign, Plus, ReceiptText,
+  ArrowUpRight, CalendarDays, Plus, ReceiptText,
   Search, ShieldCheck, Sparkles, Users,
 } from 'lucide-react'
 import Badge from '../../components/ui/Badge'
 import Button from '../../components/ui/Button'
 import Card, { CardHeader, CardTitle } from '../../components/ui/Card'
 import { useExpenseStore } from '../../store/expense.store'
+import AddExpense from './AddExpense'
 
 const stats = [
   { label: 'Month spend', icon: ReceiptText },
@@ -18,8 +20,35 @@ const stats = [
 const formatAmount = (amount) => `INR ${Number(amount || 0).toLocaleString('en-IN')}`
 
 const ExpenseList = () => {
-  const navigate = useNavigate()
+  const location = useLocation()
+  const [expenseDialogOpen, setExpenseDialogOpen] = useState(false)
   const expenses = useExpenseStore((state) => state.expenses)
+  const beginEditExpense = useExpenseStore((state) => state.beginEditExpense)
+
+  useEffect(() => {
+    if (location.state?.openExpenseDialog) {
+      if (location.state.editExpenseId) {
+        beginEditExpense(location.state.editExpenseId)
+      }
+
+      setExpenseDialogOpen(true)
+    }
+  }, [beginEditExpense, location.state])
+
+  useEffect(() => {
+    if (!expenseDialogOpen) return undefined
+
+    const originalBodyOverflow = document.body.style.overflow
+    const originalHtmlOverflow = document.documentElement.style.overflow
+
+    document.body.style.overflow = 'hidden'
+    document.documentElement.style.overflow = 'hidden'
+
+    return () => {
+      document.body.style.overflow = originalBodyOverflow
+      document.documentElement.style.overflow = originalHtmlOverflow
+    }
+  }, [expenseDialogOpen])
 
   const total = useMemo(
     () => expenses.reduce((sum, expense) => sum + Number(expense.amount || 0), 0),
@@ -39,6 +68,38 @@ const ExpenseList = () => {
     formatAmount(pendingTotal),
   ]
 
+  const expenseDialog = (
+    <div
+      className={[
+        'fixed inset-0 z-[100] grid overscroll-contain place-items-center px-3 py-5 transition md:px-5',
+        expenseDialogOpen ? 'pointer-events-auto' : 'pointer-events-none',
+      ].join(' ')}
+    >
+      <button
+        type="button"
+        aria-label="Close add expense dialog"
+        onClick={() => setExpenseDialogOpen(false)}
+        className={[
+          'absolute inset-0 bg-ink/50 backdrop-blur-[4px] transition-opacity duration-300',
+          expenseDialogOpen ? 'opacity-100' : 'opacity-0',
+        ].join(' ')}
+      />
+      <div
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="add-expense-title"
+        className={[
+          'relative z-10 h-[min(42rem,calc(100vh-2rem))] w-full max-w-3xl overscroll-contain overflow-hidden rounded-2xl bg-surface shadow-[0_28px_90px_rgba(28,25,23,0.34)] ring-1 ring-white/80 transition-all duration-300',
+          expenseDialogOpen
+            ? 'translate-y-0 scale-100 opacity-100'
+            : 'translate-y-5 scale-95 opacity-0',
+        ].join(' ')}
+      >
+        <AddExpense mode="dialog" onClose={() => setExpenseDialogOpen(false)} />
+      </div>
+    </div>
+  )
+
   return (
     <div className="mx-auto grid max-w-6xl gap-4">
       <section className="surface-glow overflow-hidden rounded-xl bg-ink text-white shadow-[0_18px_50px_rgba(28,25,23,0.16)]">
@@ -56,7 +117,7 @@ const ExpenseList = () => {
           <Button
             className="h-10 rounded-lg px-3 text-xs"
             icon={Plus}
-            onClick={() => navigate('/expenses/add')}
+            onClick={() => setExpenseDialogOpen(true)}
           >
             Add Expense
           </Button>
@@ -166,6 +227,8 @@ const ExpenseList = () => {
           ))}
         </div>
       </section>
+
+      {createPortal(expenseDialog, document.body)}
     </div>
   )
 }

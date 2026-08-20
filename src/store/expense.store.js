@@ -60,6 +60,7 @@ export const useExpenseStore = create((set, get) => ({
   draft: initialDraft,
   expenses: initialExpenses,
   errors: {},
+  editingExpenseId: null,
   setDraftField: (field, value) =>
     set((state) => ({
       draft: {
@@ -96,6 +97,28 @@ export const useExpenseStore = create((set, get) => ({
       },
     })),
   setErrors: (errors) => set({ errors }),
+  beginEditExpense: (expenseId) =>
+    set((state) => {
+      const expense = state.expenses.find((item) => item.id === expenseId)
+
+      if (!expense) return state
+
+      return {
+        draft: {
+          title: expense.title || '',
+          amount: String(expense.amount || ''),
+          category: expense.category || '',
+          paidBy: expense.paidBy || '',
+          splitMethod: expense.splitMethod || '',
+          date: expense.date || today,
+          members: expense.members?.length ? expense.members : initialDraft.members,
+          notes: expense.notes || '',
+          receiptName: expense.receiptName || '',
+        },
+        errors: {},
+        editingExpenseId: expenseId,
+      }
+    }),
   addExpense: (expense) =>
     set((state) => {
       const savedExpense = {
@@ -113,9 +136,27 @@ export const useExpenseStore = create((set, get) => ({
         ],
         draft: initialDraft,
         errors: {},
+        editingExpenseId: null,
         lastAddedExpenseId: savedExpense.id,
       }
     }),
+  updateExpense: (expenseId, expense) =>
+    set((state) => ({
+      expenses: state.expenses.map((item) =>
+        item.id === expenseId
+          ? {
+            ...item,
+            ...expense,
+            amount: Number(expense.amount),
+            members: expense.members?.length ? expense.members : initialDraft.members,
+            status: Number(expense.amount) > 1000 ? 'Pending' : 'Approved',
+          }
+          : item,
+      ),
+      draft: initialDraft,
+      errors: {},
+      editingExpenseId: null,
+    })),
   getExpenseById: (expenseId) =>
     get().expenses.find((expense) => expense.id === expenseId),
   removeExpense: (expenseId) =>
@@ -140,5 +181,5 @@ export const useExpenseStore = create((set, get) => ({
         ],
       }
     }),
-  resetDraft: () => set({ draft: initialDraft, errors: {} }),
+  resetDraft: () => set({ draft: initialDraft, errors: {}, editingExpenseId: null }),
 }))

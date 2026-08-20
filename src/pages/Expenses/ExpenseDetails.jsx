@@ -1,7 +1,7 @@
 import { createElement } from 'react'
 import { Link, useNavigate, useParams } from 'react-router-dom'
 import {
-  ArrowLeft, CalendarDays, Copy, Paperclip, ReceiptText, Trash2,
+  ArrowLeft, CalendarDays, Copy, Paperclip, PencilLine, ReceiptText, Trash2,
   UserRound, Users, WalletCards,
 } from 'lucide-react'
 import Badge from '../../components/ui/Badge'
@@ -48,6 +48,15 @@ const ExpenseDetails = () => {
     navigate('/expenses')
   }
 
+  const handleEdit = () => {
+    navigate('/expenses', {
+      state: {
+        openExpenseDialog: Date.now(),
+        editExpenseId: expense.id,
+      },
+    })
+  }
+
   return (
     <div className="mx-auto grid max-w-5xl gap-4">
       <section className="animate-rise-in rounded-xl bg-ink p-4 text-white shadow-[0_18px_50px_rgba(28,25,23,0.16)]">
@@ -75,6 +84,14 @@ const ExpenseDetails = () => {
           <div className="text-left md:text-right">
             <p className="text-[10px] font-black uppercase tracking-[0.16em] text-orange-100">total amount</p>
             <p className="text-2xl font-black text-white">{formatAmount(expense.amount)}</p>
+            <button
+              type="button"
+              onClick={handleEdit}
+              className="mt-2 inline-flex items-center gap-1.5 rounded-lg bg-white/10 px-2.5 py-1.5 text-[11px] font-black text-white ring-1 ring-white/15 transition hover:bg-primary"
+            >
+              <PencilLine className="h-3.5 w-3.5" />
+              Edit
+            </button>
           </div>
         </div>
       </section>
@@ -146,7 +163,10 @@ const ExpenseDetails = () => {
                 Manage
               </CardTitle>
             </CardHeader>
-            <div className="grid grid-cols-2 gap-2">
+            <div className="grid grid-cols-3 gap-2">
+              <Button variant="accent" size="sm" className="rounded-lg" icon={PencilLine} onClick={handleEdit}>
+                Edit
+              </Button>
               <Button variant="secondary" size="sm" className="rounded-lg" icon={Copy} onClick={handleDuplicate}>
                 Copy
               </Button>
