@@ -1,3 +1,8 @@
+import {
+  createAuthRequestInterceptor,
+  createAuthResponseInterceptor,
+} from '../interceptor/interceptor'
+
 const API_BASE_URL =
   import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000/api/v1'
 
@@ -10,18 +15,6 @@ const responseInterceptors = []
 const isFormData = (value) =>
   typeof FormData !== 'undefined' && value instanceof FormData
 
-const getStoredToken = () => localStorage.getItem(ACCESS_TOKEN_KEY)
-
-const authRequestInterceptor = (config) => {
-  const token = getStoredToken()
-
-  if (token) {
-    config.headers.Authorization = `Bearer ${token}`
-  }
-
-  return config
-}
-
 const jsonRequestInterceptor = (config) => {
   if (!config.body || isFormData(config.body)) {
     return config
@@ -32,19 +25,6 @@ const jsonRequestInterceptor = (config) => {
 
   return config
 }
-
-const authResponseInterceptor = async (response) => {
-  if (response.status === 401) {
-    localStorage.removeItem(ACCESS_TOKEN_KEY)
-    localStorage.removeItem(REFRESH_TOKEN_KEY)
-    window.dispatchEvent(new CustomEvent('roommatex:unauthorized'))
-  }
-
-  return response
-}
-
-requestInterceptors.push(authRequestInterceptor, jsonRequestInterceptor)
-responseInterceptors.push(authResponseInterceptor)
 
 const buildUrl = (endpoint, params) => {
   const url = endpoint.startsWith('http')
@@ -99,6 +79,9 @@ export const tokenStorage = {
     localStorage.removeItem(REFRESH_TOKEN_KEY)
   },
 }
+
+requestInterceptors.push(createAuthRequestInterceptor(tokenStorage), jsonRequestInterceptor)
+responseInterceptors.push(createAuthResponseInterceptor(tokenStorage))
 
 export const apiInterceptors = {
   useRequest: (interceptor) => {

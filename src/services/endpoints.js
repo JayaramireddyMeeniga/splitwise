@@ -8,6 +8,9 @@ export const ENDPOINTS = {
     resetPassword: '/auth/reset-password',
     verifyOtp: '/auth/verify-otp',
   },
+  dashboard: {
+    root: '/dashboard',
+  },
   rooms: {
     root: '/rooms',
     details: (roomId) => `/rooms/${roomId}`,

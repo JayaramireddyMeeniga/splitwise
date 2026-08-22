@@ -1,16 +1,17 @@
 import { createElement } from 'react'
 import { ShieldCheck, UserRound } from 'lucide-react'
 import { cn } from '../../utils/cn'
+import { ROLES } from '../../utils/roles'
 
 const roles = [
   {
-    value: 'maintainer',
+    value: ROLES.MAINTAINER,
     label: 'Room Maintainer',
     description: 'Create rooms, approve expenses, settle dues.',
     icon: ShieldCheck,
   },
   {
-    value: 'member',
+    value: ROLES.MEMBER,
     label: 'Roommate',
     description: 'Pay dues, add expenses, track settlements.',
     icon: UserRound,
