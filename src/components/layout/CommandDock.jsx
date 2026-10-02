@@ -18,8 +18,8 @@ const navItems = [
 ]
 
 const CommandDock = () => (
-  <div className="pointer-events-none fixed inset-x-0 bottom-5 z-40 px-3">
-    <nav className="animate-dock-in pointer-events-auto mx-auto flex max-w-4xl items-center gap-5 overflow-x-auto rounded-3xl border border-white/16 bg-charcoal/92 p-2.5 shadow-[0_22px_58px_rgba(28,25,23,0.28)] backdrop-blur-2xl">
+  <div className="pointer-events-none fixed inset-x-0 bottom-5 z-40 flex justify-center px-3">
+    <nav className="animate-dock-in pointer-events-auto flex w-fit max-w-full items-center gap-5 overflow-x-auto rounded-3xl border border-white/16 bg-charcoal/92 p-2.5 shadow-[0_22px_58px_rgba(28,25,23,0.28)] backdrop-blur-2xl">
       <div className="hidden shrink-0 items-center gap-3 border-r border-white/10 px-3 pr-5 md:flex">
         <div className="grid p-3 place-items-center rounded-xl bg-primary text-base font-black text-white shadow-[0_10px_22px_rgba(249,115,22,0.22)]">
           RX
