@@ -1,10 +1,11 @@
 import { useNavigate } from 'react-router-dom'
 import {
-    ArrowLeft, CalendarDays, Check, CircleDollarSign, Paperclip, X,
+    ArrowLeft, Check, CircleDollarSign, Paperclip, X,
     ReceiptText, RotateCcw, ShieldCheck, Sparkles, Users,
 } from 'lucide-react'
 import Button from '../../components/ui/Button'
 import Card, { CardHeader, CardTitle } from '../../components/ui/Card'
+import FormDateInput from '../../components/forms/FormDateInput'
 import FormInput from '../../components/forms/FormInput'
 import FormSelect from '../../components/forms/FormSelect'
 import FormTextarea from '../../components/forms/FormTextarea'
@@ -93,7 +94,7 @@ const AddExpense = ({ mode = 'page', onClose, onSaved }) => {
                         <button
                             type="button"
                             onClick={handleBack}
-                            className="inline-flex items-center gap-1.5 text-[11px] font-black uppercase tracking-[0.14em] text-orange-100 transition hover:text-white"
+                            className="inline-flex items-center gap-1.5 text-[11px] font-black uppercase tracking-[0.14em] text-primary-light transition hover:text-white"
                         >
                             <ArrowLeft className="h-3.5 w-3.5" />
                             Expenses
@@ -144,12 +145,10 @@ const AddExpense = ({ mode = 'page', onClose, onSaved }) => {
                             icon={CircleDollarSign}
                             error={errors.amount}
                         />
-                        <FormInput
+                        <FormDateInput
                             label="Date"
-                            type="date"
                             value={draft.date}
                             onChange={(event) => setDraftField('date', event.target.value)}
-                            icon={CalendarDays}
                             error={errors.date}
                         />
                     </div>

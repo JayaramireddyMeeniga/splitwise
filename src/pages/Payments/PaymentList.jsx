@@ -1,7 +1,6 @@
 import { createElement, useMemo } from 'react'
 import {
   BadgeCheck,
-  CalendarDays,
   CreditCard,
   FileCheck2,
   Landmark,
@@ -16,6 +15,7 @@ import Card, { CardHeader, CardTitle } from '../../components/ui/Card'
 import Badge from '../../components/ui/Badge'
 import Button from '../../components/ui/Button'
 import Table from '../../components/ui/Table'
+import FormDateInput from '../../components/forms/FormDateInput'
 import FormInput from '../../components/forms/FormInput'
 import FormSelect from '../../components/forms/FormSelect'
 import FormTextarea from '../../components/forms/FormTextarea'
@@ -167,12 +167,10 @@ const PaymentList = () => {
                 icon={WalletCards}
                 error={errors.amount}
               />
-              <FormInput
+              <FormDateInput
                 label="Date"
-                type="date"
                 value={draft.date}
                 onChange={(event) => setDraftField('date', event.target.value)}
-                // icon={CalendarDays}
                 error={errors.date}
               />
             </div>

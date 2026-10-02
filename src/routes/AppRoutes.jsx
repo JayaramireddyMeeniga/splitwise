@@ -12,6 +12,8 @@ import RoomDetails from '../pages/Rooms/RoomDetails'
 import ExpenseList from '../pages/Expenses/ExpenseList'
 import AddExpense from '../pages/Expenses/AddExpense'
 import ExpenseDetails from '../pages/Expenses/ExpenseDetails'
+import MemberList from '../pages/Members/MemberList'
+import AddMember from '../pages/Members/AddMember'
 import PaymentList from '../pages/Payments/PaymentList'
 import Wallet from '../pages/Wallet/Wallet'
 import Reports from '../pages/Reports/Reports'
@@ -78,6 +80,22 @@ const AppRoutes = () => (
       element={
         <AppLayout>
           <ExpenseDetails />
+        </AppLayout>
+      }
+    />
+    <Route
+      path="/members"
+      element={
+        <AppLayout>
+          <MemberList />
+        </AppLayout>
+      }
+    />
+    <Route
+      path="/members/add"
+      element={
+        <AppLayout>
+          <AddMember />
         </AppLayout>
       }
     />

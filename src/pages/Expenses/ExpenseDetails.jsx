@@ -62,7 +62,7 @@ const ExpenseDetails = () => {
       <section className="animate-rise-in rounded-xl bg-ink p-4 text-white shadow-[0_18px_50px_rgba(28,25,23,0.16)]">
         <Link
           to="/expenses"
-          className="mb-3 inline-flex items-center gap-1.5 text-[11px] font-black uppercase tracking-[0.14em] text-orange-100 transition hover:text-white"
+          className="mb-3 inline-flex items-center gap-1.5 text-[11px] font-black uppercase tracking-[0.14em] text-primary-light transition hover:text-white"
         >
           <ArrowLeft className="h-3.5 w-3.5" />
           Expenses
@@ -82,7 +82,7 @@ const ExpenseDetails = () => {
             <p className="mt-1 text-xs font-semibold text-stone-300">{expense.notes || 'No notes added.'}</p>
           </div>
           <div className="text-left md:text-right">
-            <p className="text-[10px] font-black uppercase tracking-[0.16em] text-orange-100">total amount</p>
+            <p className="text-[10px] font-black uppercase tracking-[0.16em] text-primary-light">total amount</p>
             <p className="text-2xl font-black text-white">{formatAmount(expense.amount)}</p>
             <button
               type="button"

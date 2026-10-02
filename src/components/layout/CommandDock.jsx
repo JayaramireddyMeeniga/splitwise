@@ -1,12 +1,7 @@
 import { createElement } from 'react'
 import {
-  BarChart3,
-  CreditCard,
-  Home,
-  ReceiptText,
-  Settings,
-  Users,
-  WalletCards,
+  BarChart3, CreditCard, Home,
+  ReceiptText, Users, WalletCards,
 } from 'lucide-react'
 import { NavLink } from 'react-router-dom'
 import { cn } from '../../utils/cn'
@@ -14,12 +9,12 @@ import { cn } from '../../utils/cn'
 const navItems = [
   { label: 'Home', href: '/dashboard', icon: Home },
   { label: 'Rooms', href: '/rooms', icon: Users },
+  { label: 'Members', href: '/members', icon: Users },
   { label: 'Spend', href: '/expenses', icon: ReceiptText },
   { label: 'Pay', href: '/payments', icon: CreditCard },
   { label: 'Wallet', href: '/wallet', icon: WalletCards },
   { label: 'Reports', href: '/reports', icon: BarChart3 },
   // { label: 'Alerts', href: '/notifications', icon: Bell },
-  { label: 'Setup', href: '/settings', icon: Settings },
 ]
 
 const CommandDock = () => (
@@ -29,10 +24,10 @@ const CommandDock = () => (
         <div className="grid p-3 place-items-center rounded-xl bg-primary text-base font-black text-white shadow-[0_10px_22px_rgba(249,115,22,0.22)]">
           RX
         </div>
-        <div>
+        {/* <div>
           <p className="text-xs font-black uppercase tracking-[0.18em] text-primary-light">RoomMateX</p>
           <p className="text-[11px] font-bold text-white/38">Command dock</p>
-        </div>
+        </div> */}
       </div>
 
       {navItems.map(({ label, href, icon }) => (

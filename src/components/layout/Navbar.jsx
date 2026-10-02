@@ -1,6 +1,9 @@
-import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
-import { Bell, LogOut, Plus, Search, UserCircle2, WalletCards } from 'lucide-react'
+import { createElement, useState } from 'react'
+import { useLocation, useNavigate } from 'react-router-dom'
+import {
+  Bell, ChevronRight, LogOut, Plus, Search, Settings,
+  ShieldCheck, UserCircle2, Users, WalletCards,
+} from 'lucide-react'
 import Button from '../ui/Button'
 import logo from '../../assets/split-wise-logo.png'
 
@@ -13,6 +16,7 @@ const getLedgerMonth = () =>
 const Navbar = () => {
   const ledgerMonth = getLedgerMonth()
   const navigate = useNavigate()
+  const location = useLocation()
   const [profileOpen, setProfileOpen] = useState(false)
 
   const handleNewEntry = () => {
@@ -23,15 +27,36 @@ const Navbar = () => {
     })
   }
 
-  const handleProfile = () => {
+  const handleNavigate = (path) => {
     setProfileOpen(false)
-    navigate('/profile')
+    navigate(path)
   }
 
   const handleLogout = () => {
     setProfileOpen(false)
     navigate('/login')
   }
+
+  const profileItems = [
+    {
+      label: 'Profile',
+      detail: 'Personal info',
+      path: '/profile',
+      icon: UserCircle2,
+    },
+    {
+      label: 'Members',
+      detail: 'Room people',
+      path: '/members',
+      icon: Users,
+    },
+    {
+      label: 'Settings',
+      detail: 'Room setup',
+      path: '/settings',
+      icon: Settings,
+    },
+  ]
 
   return (
     <nav className="sticky top-0 z-30 px-3 pt-3 md:px-5">
@@ -97,22 +122,71 @@ const Navbar = () => {
                 onClick={() => setProfileOpen((open) => !open)}
               />
               {profileOpen && (
-                <div className="absolute right-0 top-12 z-50 w-44 overflow-hidden rounded-xl border border-stone-200 bg-surface p-1.5 shadow-[0_18px_50px_rgba(28,25,23,0.16)]">
-                  <button
-                    type="button"
-                    onClick={handleProfile}
-                    className="flex w-full items-center gap-2 rounded-lg px-3 py-2 text-left text-xs font-black text-ink transition hover:bg-primary-light hover:text-primary"
-                  >
-                    <UserCircle2 className="h-4 w-4" />
-                    Profile
-                  </button>
+                <div className="animate-rise-in absolute right-0 top-13 z-50 w-[19rem] overflow-hidden rounded-2xl border border-white/80 bg-surface/95 p-2 shadow-[0_24px_70px_rgba(28,25,23,0.22)] ring-1 ring-stone-200/80 backdrop-blur-2xl">
+                  <div className="surface-glow mb-2 rounded-xl bg-ink p-3 text-white">
+                    <div className="flex items-center gap-3">
+                      <span className="grid h-11 w-11 place-items-center rounded-xl bg-primary text-sm font-black shadow-[0_12px_24px_rgba(249,115,22,0.24)]">
+                        RX
+                      </span>
+                      <div className="min-w-0">
+                        <p className="truncate text-sm font-black">RoomMateX account</p>
+                        <p className="mt-0.5 text-[11px] font-bold text-stone-300">6 active roommates</p>
+                      </div>
+                      <ShieldCheck className="ml-auto h-4 w-4 text-primary-light" />
+                    </div>
+                  </div>
+
+                  <div className="grid gap-1">
+                    {profileItems.map(({ label, detail, path, icon }) => {
+                      const active = location.pathname === path
+
+                      return (
+                        <button
+                          key={path}
+                          type="button"
+                          onClick={() => handleNavigate(path)}
+                          className={[
+                            'group flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-left transition hover:-translate-y-0.5',
+                            active
+                              ? 'bg-primary-light text-primary ring-1 ring-primary/20'
+                              : 'text-ink hover:bg-stone-50 hover:text-primary',
+                          ].join(' ')}
+                        >
+                          <span
+                            className={[
+                              'grid h-9 w-9 shrink-0 place-items-center rounded-lg transition',
+                              active
+                                ? 'bg-primary text-white'
+                                : 'bg-stone-100 text-stone-500 group-hover:bg-primary-light group-hover:text-primary',
+                            ].join(' ')}
+                          >
+                            {createElement(icon, { className: 'h-4.5 w-4.5' })}
+                          </span>
+                          <span className="min-w-0 flex-1">
+                            <span className="block text-sm font-black">{label}</span>
+                            <span className="block text-[11px] font-bold text-stone-500">{detail}</span>
+                          </span>
+                          <ChevronRight className="h-4 w-4 text-stone-400 transition group-hover:translate-x-0.5 group-hover:text-primary" />
+                        </button>
+                      )
+                    })}
+                  </div>
+
+                  <div className="my-2 h-px bg-stone-200" />
+
                   <button
                     type="button"
                     onClick={handleLogout}
-                    className="flex w-full items-center gap-2 rounded-lg px-3 py-2 text-left text-xs font-black text-ink transition hover:bg-danger-light hover:text-danger"
+                    className="group flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-left text-ink transition hover:-translate-y-0.5 hover:bg-danger-light hover:text-danger"
                   >
-                    <LogOut className="h-4 w-4" />
-                    Logout
+                    <span className="grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-stone-100 text-stone-500 transition group-hover:bg-white group-hover:text-danger">
+                      <LogOut className="h-4.5 w-4.5" />
+                    </span>
+                    <span className="min-w-0 flex-1">
+                      <span className="block text-sm font-black">Logout</span>
+                      <span className="block text-[11px] font-bold text-stone-500">End session</span>
+                    </span>
+                    <ChevronRight className="h-4 w-4 text-stone-400 transition group-hover:translate-x-0.5 group-hover:text-danger" />
                   </button>
                 </div>
               )}

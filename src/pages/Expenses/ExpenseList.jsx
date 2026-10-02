@@ -105,7 +105,7 @@ const ExpenseList = () => {
       <section className="surface-glow overflow-hidden rounded-xl bg-ink text-white shadow-[0_18px_50px_rgba(28,25,23,0.16)]">
         <div className="grid gap-4 p-4 md:grid-cols-[1fr_auto] md:items-center">
           <div className="min-w-0">
-            <div className="mb-2 inline-flex items-center gap-1.5 rounded-full bg-white/10 px-2.5 py-1 text-[10px] font-black uppercase tracking-[0.16em] text-orange-100 ring-1 ring-white/15">
+            <div className="mb-2 inline-flex items-center gap-1.5 rounded-full bg-white/10 px-2.5 py-1 text-[10px] font-black uppercase tracking-[0.16em] text-primary-light ring-1 ring-white/15">
               <Sparkles className="h-3 w-3" />
               Expense hub
             </div>

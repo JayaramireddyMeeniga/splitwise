@@ -39,7 +39,7 @@ const RoleSwitch = ({ value, onChange }) => (
             <span
               className={cn(
                 'grid p-2.5 shrink-0 place-items-center rounded-lg transition',
-                selected ? 'bg-primary text-white' : 'bg-gray-200 text-stone-500 group-hover:text-primary',
+                selected ? 'bg-primary text-white' : 'bg-canvas text-stone-500 group-hover:text-primary',
               )}
             >
               {createElement(icon, { className: 'h-4 w-4' })}
